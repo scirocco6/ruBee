@@ -11,7 +11,7 @@ require 'thread'
 $screen_semaphore = Mutex.new
 
 nickname        = ENV['USER']
-default_group   = 'IcyBee'
+default_group   = 'ruBee'
 password        = ''
 
 opts = GetoptLong.new(
@@ -64,17 +64,17 @@ puts "Connecting..."
 
 $icb_socket  = IcbPacket::icb_socket
 protocol     = IcbPacket::get_packet($icb_socket)
-login_packet = IcbPacket::new(:login, [nickname, nickname, default_group, 'login', ''])
-login_packet.send($icb_socket)
+login_packet = IcbPacket::new(:login, ['ruBee', nickname, default_group, 'login', password, ''])
 
+login_packet.send($icb_socket)
 login_result = IcbPacket::get_packet($icb_socket)
 
 unless login_result[0] == 'a' 
-  puts "login failed.\n#{login_result[2..login_result.length]}"
+  puts "login failed.\n#{login_result[1..login_result.length]}"
   exit
 end
 
-$reader_thread = IcbRead.new 
+$reader_thread = IcbRead.new
 $user_thread   = UserInput.new.join
 #
 # Execution never reaches this point.  

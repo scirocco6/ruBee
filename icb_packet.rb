@@ -46,8 +46,30 @@ class IcbPacket
                return "#{packet[3, packet.length]}"
             when 'iec'
               return "#{packet[3, packet.length]}"
+            when 'iwh' # output the who header
+              return "   Nickname          Idle       Sign-On        Account"
             when 'iwl' # item in a who listing
-                return "#{packet[3, packet.length]}"
+              (type, flag, nick, idle, respc, login, user, host) = packet.split 1.chr
+              account = "#{user}@#{host}"
+              flag = '*' if flag == 'm'
+              
+              seconds = idle.to_i
+
+              days     = seconds / (24 * 60 * 60);
+              seconds -= days * 24 * 60 * 60;
+              hours    = seconds / (60 * 60);
+              seconds -= hours * 60 * 60;
+              minutes  = seconds / 60;
+              seconds -= minutes * 60;
+                      
+              idle = ''
+              idle << "#{days}d"    if days     > 0
+              idle << "#{hours}h"   if hours    > 0
+              idle << "#{minutes}m" if minutes  > 0
+              idle << "#{seconds}s" if seconds  > 0
+              idle = '-' if idle == ''
+              
+              return "#{flag}#{nick.ljust(13)}#{idle.rjust(14)}#{Time.at(login.to_i).strftime("%m/%d %H:%M").rjust(13)}  #{account}"
           end
           
         when 'k' # beep

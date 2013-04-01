@@ -18,7 +18,6 @@ class UserInput < Thread
             IcbPacket::new(:open, [line]).send($icb_socket)
           else
             input = line.split
-            puts input
             if input.first == '/beep'
               IcbPacket::new(:beep, [input.last]).send($icb_socket)
             elsif line =~ /^\/m\s(.*)/
