@@ -15,19 +15,22 @@ $screen_semaphore = Mutex.new
 nickname        = ENV['USER']
 default_group   = 'ruBee'
 password        = ''
+$color          = true
 
 opts = GetoptLong.new(
   [ '--help',     '-h', GetoptLong::NO_ARGUMENT ],
   [ '--group',    '-g', GetoptLong::OPTIONAL_ARGUMENT ],
   [ '--nickname', '-n', GetoptLong::OPTIONAL_ARGUMENT ],
-  [ '--password', '-p', GetoptLong::OPTIONAL_ARGUMENT]
+  [ '--password', '-p', GetoptLong::OPTIONAL_ARGUMENT],
+  [ '--nocolor',  '-m', GetoptLong::NO_ARGUMENT]
 )
 
 usage = "ruBee {options}
   -g group, --group group    group to join at startup
   -h, --help                 this message
   -n, --nickname nickname    nickname to use
-  -p, --password password    login using password 
+  -p, --password password    login using password
+  -m, --nocolor              disable text coloration
 "
 
 opts.each do |opt, arg|
@@ -53,6 +56,8 @@ opts.each do |opt, arg|
         exit 0
       end
       password = arg
+    when '--nocolor'
+      $color = false
     else
       puts usage
       exit 0

@@ -1,6 +1,6 @@
 class String
-  # colorization
   def fg_color(fg)
+    return self unless $color
     color = ''
     case fg
       when :black
