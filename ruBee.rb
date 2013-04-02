@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require './defaults.rb'
 require './string'
 require './icb_packet'
 require './icb_read'
@@ -15,7 +16,7 @@ $screen_semaphore = Mutex.new
 nickname        = ENV['USER']
 default_group   = 'ruBee'
 password        = ''
-$color          = true
+
 
 opts = GetoptLong.new(
   [ '--help',     '-h', GetoptLong::NO_ARGUMENT ],
