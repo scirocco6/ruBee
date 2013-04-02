@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require './string'
 require './icb_packet'
 require './icb_read'
 require './user_input'
@@ -7,6 +8,7 @@ require "io/wait"
 require 'readline'
 require 'getoptlong'
 require 'thread'
+
 
 $screen_semaphore = Mutex.new
 

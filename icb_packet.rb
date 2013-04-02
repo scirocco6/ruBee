@@ -20,22 +20,22 @@ class IcbPacket
       case packet[0,1]          
         when 'b' # open message
           (from, text) = packet.split 1.chr
-          return "<#{from[1, from.length]}> #{text}"
+          return "<#{from[1, from.length]}>".fg_color(:magenta) << " #{text}"
           
         when 'c' # personal message
           (from, text) = packet.split 1.chr
-          return "<*#{from[1, from.length]}*> #{text}"
+          return "<*#{from[1, from.length]}*>".fg_color(:green) << " #{text}"
         
         when 'd' # status message
           (category, text) = packet.split 1.chr
-          return "[=#{category[1, category.length]}=] #{text}"        
+          return "[=#{category[1, category.length]}=]".fg_color(:yellow) << " #{text}"        
           
         when 'e' # error message
-          return "[=Server Error=] #{packet[1, packet.length]}"
+          return "[=Error=]".fg_color(:red) << " #{packet[1, packet.length]}"
           
         when 'f' # important message
           (category, text) = packet.split 1.chr
-          return "[!#{category[1, category.length]}!] #{text}"
+          return "[!#{category[1, category.length]}!]".fg_color(:brown) << "#{text}"
           
         when 'g' # exit
           exit 0
@@ -43,11 +43,11 @@ class IcbPacket
         when 'i' # command output 
           case packet[0,3]
             when 'ico'
-               return "#{packet[3, packet.length]}"
+               return "#{packet[3, packet.length]}".fg_color(:cyan)
             when 'iec'
-              return "#{packet[3, packet.length]}"
+              return "#{packet[3, packet.length]}".fg_color(:yellow)
             when 'iwh' # output the who header
-              return "   Nickname          Idle       Sign-On        Account"
+              return "   Nickname          Idle       Sign-On        Account".fg_color(:blue)
             when 'iwl' # item in a who listing
               (type, flag, nick, idle, respc, login, user, host) = packet.split 1.chr
               account = "#{user}@#{host}"
@@ -69,23 +69,23 @@ class IcbPacket
               idle << "#{seconds}s" if seconds  > 0
               idle = '-' if idle == ''
               
-              return "#{flag}#{nick.ljust(13)}#{idle.rjust(14)}#{Time.at(login.to_i).strftime("%m/%d %H:%M").rjust(13)}  #{account}"
+              return "#{flag}#{nick.ljust(13)}#{idle.rjust(14)}#{Time.at(login.to_i).strftime("%m/%d %H:%M").rjust(13)}  #{account}".fg_color(:white)
           end
           
         when 'k' # beep
-          return "[=Beep!=] #{packet[1, packet.length]} sent you a beep!"
+          return "[=Beep!=]".fg_color(:green) << " #{packet[1, packet.length]} sent you a beep!"
         
         when 'l' # ping
-          return "[=Server=] ping #{packet[1, packet.length]}" 
+          return "[=Server=]".fg_color(:yellow) << " ping #{packet[1, packet.length]}" 
            
         when 'm' # ping
-          return "[=Server=] pong #{packet[1, packet.length]}"
+          return "[=Server=]".fg_color(:yellow) << " pong #{packet[1, packet.length]}"
           
         when 'n' # NOP packet
-          return "[=Server=] NOP!!@"
+          return "[=Server=]".fg_color(:yellow) << " NOP!!@"
           
         else
-          return "Unknown packet of type '#{packet[0,1]}'\n#{packet}"
+          return "Unknown packet of type '#{packet[0,1]}'\n#{packet}".fg_color(:red)
       end
     end
 
