@@ -39,19 +39,19 @@ opts.each do |opt, arg|
       puts usage
       exit 0
     when '--group'
-      if arg == '' then
+      if arg == ''
         puts usage
         exit 0
       end
       default_group = arg
     when '--nickname'
-      if arg == '' then
+      if arg == ''
         puts usage
         exit 0
       end
       nickname = arg
    when '--password'
-     if arg == '' then
+     if arg == ''
         puts usage
         exit 0
       end
