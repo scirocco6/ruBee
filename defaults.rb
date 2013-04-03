@@ -1,4 +1,4 @@
-$nick_list        = ['six', 'ishtar']
+$nick_list        = []
 
 $color            = true
 $open_color       = :magenta
