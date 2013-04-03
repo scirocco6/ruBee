@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require './defaults.rb'
+require './defaults'
 require './string'
 require './icb_packet'
 require './icb_read'
@@ -9,7 +9,12 @@ require "io/wait"
 require 'readline'
 require 'getoptlong'
 require 'thread'
+require 'pathname'
 
+pn = Pathname.new("#{Dir.home}/.ruBeerc")
+if pn.exist?
+  load "#{Dir.home}/.ruBeerc"
+end
 
 $screen_semaphore = Mutex.new
 
