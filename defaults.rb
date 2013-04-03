@@ -1,3 +1,5 @@
+$nick_list        = ['six', 'ishtar']
+
 $color            = true
 $open_color       = :magenta
 $im_color         = :green

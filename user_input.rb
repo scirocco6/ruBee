@@ -5,6 +5,20 @@ require 'readline'
 class UserInput < Thread
   def initialize
     super do
+      next_nic = 0
+      comp = proc do |s|
+        if $nick_list.size > 0
+          s.sub!(/^\/m \w+\s*/,'')
+          s.prepend "/m #{$nick_list[next_nic]} "
+          next_nic = next_nic == $nick_list.size - 1 ? 0 : next_nic + 1
+          s
+        end
+      end
+      Readline.completer_quote_characters       = ''
+      Readline.completer_word_break_characters  = ''
+      Readline.completion_append_character      = ''
+      Readline.completion_proc                  = comp
+
       while 1 do
         system "stty raw -echo cbreak"
         if $stdin.wait
@@ -13,15 +27,16 @@ class UserInput < Thread
             system "stty #{TERMINAL_STATE}"
             line = Readline.readline('', true)
           end
-                   
+
           unless line.start_with? '/'
             IcbPacket::new(:open, [line]).send($icb_socket)
           else
             input = line.split
             if input.first == '/beep'
               IcbPacket::new(:beep, [input.last]).send($icb_socket)
-            elsif line =~ /^\/m\s(.*)/
-              IcbPacket::new(:private, [$1]).send($icb_socket)
+            elsif line =~ /^\/m\s(\w+)(\s.*)/
+              $nick_list.unshift $1 unless $nick_list.index $1
+              IcbPacket::new(:private, [$1 << $2]).send($icb_socket)
             elsif line =~ /^\/g\s(.*)/
               IcbPacket::new(:group, [$1]).send($icb_socket)
             elsif line =~ /^\/w\s(.+)/
