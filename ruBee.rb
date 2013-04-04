@@ -24,11 +24,6 @@ end
 
 $screen_semaphore = Mutex.new
 
-nickname        = ENV['USER']
-default_group   = 'ruBee'
-password        = ''
-
-
 opts = GetoptLong.new(
   [ '--help',     '-h', GetoptLong::NO_ARGUMENT ],
   [ '--group',    '-g', GetoptLong::OPTIONAL_ARGUMENT ],
@@ -55,19 +50,19 @@ opts.each do |opt, arg|
         puts usage
         exit 0
       end
-      default_group = arg
+      $default_group = arg
     when '--nickname'
       if arg == ''
         puts usage
         exit 0
       end
-      nickname = arg
+      $nickname = arg
    when '--password'
      if arg == ''
         puts usage
         exit 0
       end
-      password = arg
+      $password = arg
     when '--nocolor'
       $color = false
     else
@@ -83,7 +78,7 @@ puts "Connecting..."
 
 $icb_socket  = IcbPacket::icb_socket
 protocol     = IcbPacket::get_packet($icb_socket)
-login_packet = IcbPacket::new(:login, ['ruBee', nickname, default_group, 'login', password, ''])
+login_packet = IcbPacket::new(:login, ['ruBee', $nickname, $default_group, 'login', $password, ''])
 
 login_packet.send($icb_socket)
 login_result = IcbPacket::get_packet($icb_socket)

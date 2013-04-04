@@ -91,12 +91,12 @@ class IcbPacket
       end
     end
 
-    def initialize(type, paramaters = [])
+    def initialize(type, parameters = [])
       case type
         when :beep
 #          @type = 'k' # default.icb.net doesn't handle beep packets use command packet beep instead
           @type = 'h'
-          paramaters.unshift('beep')
+          parameters.unshift('beep')
           
         when :login
           @type = 'a'
@@ -106,25 +106,25 @@ class IcbPacket
           
         when :private
           @type = 'h'
-          paramaters.unshift('m')
+          parameters.unshift('m')
         
         when :group
           @type = 'h'
-          paramaters.unshift('g')
+          parameters.unshift('g')
           
         when :who
           @type = 'h'
-          paramaters.unshift('w')          
+          parameters.unshift('w')
         
         when :who_global
           @type = 'h'
-          paramaters.unshift("w\001")
+          parameters.unshift("w\001")
         
         when :nop
           @type = 'n'
         end
         
-      @paramaters = paramaters 
+      @parameters = parameters
     end
     
     def send(socket)
@@ -142,8 +142,8 @@ class IcbPacket
   private
     def pack_data
       data = @type # no 001 seperation between type and the first param
-      @paramaters.each { |p|
-        data += p + 1.chr # parameters are seperated by 001
+      @parameters.each { |p|
+        data += p + 1.chr # parameters are separated by 001
       }
       data[-1] = 0.chr # remove the spurious final 001 and null terminate the packet
       
