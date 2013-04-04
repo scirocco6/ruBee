@@ -17,3 +17,5 @@ $nickname         = ENV['USERNAME']
 $nickname         = ENV['USER'] if $nickname == ''
 $default_group    = 'ruBee'
 $password         = ''
+$default_host     = 'default.icb.net'
+$default_port     = '7326'

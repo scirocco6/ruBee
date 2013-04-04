@@ -3,10 +3,7 @@ class IcbPacket
   
   public
     def self.icb_socket
-      address = "default.icb.net"
-      port = "7326"
-      
-      return(TCPSocket.new(address, port))
+      return(TCPSocket.new($default_host, $default_port))
     end
     
     def self.get_packet(socket)

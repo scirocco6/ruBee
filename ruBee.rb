@@ -25,18 +25,25 @@ end
 $screen_semaphore = Mutex.new
 
 opts = GetoptLong.new(
-  [ '--help',     '-h', GetoptLong::NO_ARGUMENT ],
-  [ '--group',    '-g', GetoptLong::OPTIONAL_ARGUMENT ],
-  [ '--nickname', '-n', GetoptLong::OPTIONAL_ARGUMENT ],
-  [ '--password', '-p', GetoptLong::OPTIONAL_ARGUMENT],
-  [ '--nocolor',  '-m', GetoptLong::NO_ARGUMENT]
+  ['--help',      '-?', GetoptLong::NO_ARGUMENT ],
+  ['--group',     '-g', GetoptLong::REQUIRED_ARGUMENT ],
+  ['--nickname',  '-n', GetoptLong::REQUIRED_ARGUMENT ],
+  ['--password',  '-p', GetoptLong::REQUIRED_ARGUMENT],
+  ['--host',      '-h', GetoptLong::REQUIRED_ARGUMENT],
+  ['--port',      '-s', GetoptLong::REQUIRED_ARGUMENT],
+  ['--nocolor',   '-m', GetoptLong::NO_ARGUMENT]
 )
 
 usage = "ruBee {options}
-  -g group,    --group group        group to join at startup
-  -h,          --help               this message
   -n nickname, --nickname nickname  nickname to use
   -p password, --password password  login using password
+  -g group,    --group group        group to join at startup
+  -w,          --who                perform a global who instead of logging in
+  -w group,    --who group          who a group instead of logging in
+  -w @nickname --who nickname       who the group nickname is in instead of logging in
+  -h host,     --host host          connect to server on host
+  -s port,     --port port          connect port number port
+  -?,          --help               this message
   -m,          --nocolor            disable text coloration
 "
 
@@ -63,6 +70,18 @@ opts.each do |opt, arg|
         exit 0
       end
       $password = arg
+    when '--host'
+      if arg == ''
+        puts usage
+        exit 0
+      end
+      $default_host = arg
+    when '--port'
+      if arg == ''
+        puts usage
+        exit 0
+      end
+      $default_port = arg
     when '--nocolor'
       $color = false
     else
