@@ -14,6 +14,6 @@ $server_color     = :yellow
 $who_color        = :white
 
 $nickname         = ENV['USERNAME']
-$nickname         = ENV['USER'] if $nickname = ''
+$nickname         = ENV['USER'] if $nickname == ''
 $default_group    = 'ruBee'
-$password           = ''
+$password         = ''

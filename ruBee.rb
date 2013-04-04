@@ -33,11 +33,11 @@ opts = GetoptLong.new(
 )
 
 usage = "ruBee {options}
-  -g group, --group group    group to join at startup
-  -h, --help                 this message
-  -n, --nickname nickname    nickname to use
-  -p, --password password    login using password
-  -m, --nocolor              disable text coloration
+  -g group,    --group group        group to join at startup
+  -h,          --help               this message
+  -n nickname, --nickname nickname  nickname to use
+  -p password, --password password  login using password
+  -m,          --nocolor            disable text coloration
 "
 
 opts.each do |opt, arg|

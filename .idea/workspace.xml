@@ -3,15 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="62587990-1d17-4553-a1dc-ec94eb1f675d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/defaults.rb" afterPath="$PROJECT_DIR$/defaults.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icb_packet.rb" afterPath="$PROJECT_DIR$/icb_packet.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruBee.rb" afterPath="$PROJECT_DIR$/ruBee.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ruBee.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365038835681" ignored="false" />
+    <file path="/Dummy.txt" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365040936789" ignored="false" />
     <file path="/user_input.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365036280383" ignored="false" />
-    <file path="/ruBee.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365040031372" ignored="false" />
+    <file path="/ruBee.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365041305986" ignored="false" />
     <file path="/icb_read.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365025600163" ignored="false" />
     <file path="/defaults.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365040805945" ignored="false" />
     <file path="/icb_packet.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365040558961" ignored="false" />
@@ -33,19 +32,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="defaults.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="defaults.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/defaults.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="29" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0">
+            <state line="18" column="131" selection-start="519" selection-end="519" vertical-scroll-proportion="0.38348868">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ruBee.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ruBee.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ruBee.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="1767" selection-end="1767" vertical-scroll-proportion="0.48868176">
+            <state line="61" column="45" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -98,9 +97,9 @@
       <list>
         <option value="$PROJECT_DIR$/icb_read.rb" />
         <option value="$PROJECT_DIR$/user_input.rb" />
-        <option value="$PROJECT_DIR$/defaults.rb" />
         <option value="$PROJECT_DIR$/icb_packet.rb" />
         <option value="$PROJECT_DIR$/ruBee.rb" />
+        <option value="$PROJECT_DIR$/defaults.rb" />
       </list>
     </option>
   </component>
@@ -227,7 +226,11 @@
       <created>1365038837819</created>
       <updated>1365038837820</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="moved nickname, default_group and password into defaults so that they can be over ridden from a .ruBeerc file&#10;">
+      <created>1365040939463</created>
+      <updated>1365040939463</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -292,7 +295,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved nickname, default_group and password into defaults so that they can be over ridden from a .ruBeerc file&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -308,6 +311,7 @@
     <MESSAGE value="added support for /m ring and initial /m ring in defaults file&#10;&#10;" />
     <MESSAGE value="default nick ring should be blank :)" />
     <MESSAGE value="checkpoint" />
+    <MESSAGE value="moved nickname, default_group and password into defaults so that they can be over ridden from a .ruBeerc file&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -327,13 +331,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/defaults.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="29" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/icb_packet.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="147" column="108" selection-start="5055" selection-end="5055" vertical-scroll-proportion="0.0">
@@ -343,7 +340,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ruBee.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="1767" selection-end="1767" vertical-scroll-proportion="0.48868176">
+        <state line="61" column="45" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defaults.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="131" selection-start="519" selection-end="519" vertical-scroll-proportion="0.38348868">
           <folding />
         </state>
       </provider>
