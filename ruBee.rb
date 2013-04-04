@@ -31,7 +31,8 @@ opts = GetoptLong.new(
   ['--password',  '-p', GetoptLong::REQUIRED_ARGUMENT],
   ['--host',      '-h', GetoptLong::REQUIRED_ARGUMENT],
   ['--port',      '-s', GetoptLong::REQUIRED_ARGUMENT],
-  ['--nocolor',   '-m', GetoptLong::NO_ARGUMENT]
+  ['--nocolor',   '-m', GetoptLong::NO_ARGUMENT],
+  ['--clear',     '-c', GetoptLong::NO_ARGUMENT],
 )
 
 usage = "ruBee {options}
@@ -43,10 +44,12 @@ usage = "ruBee {options}
   -w @nickname --who nickname       who the group nickname is in instead of logging in
   -h host,     --host host          connect to server on host
   -s port,     --port port          connect port number port
-  -?,          --help               this message
+  -c,          --clear              wipe the command line arguments
   -m,          --nocolor            disable text coloration
+  -?,          --help               this message
 "
 
+wipe = false
 opts.each do |opt, arg|
   case opt
     when '--help'
@@ -70,6 +73,7 @@ opts.each do |opt, arg|
         exit 0
       end
       $password = arg
+      wipe = true
     when '--host'
       if arg == ''
         puts usage
@@ -84,11 +88,15 @@ opts.each do |opt, arg|
       $default_port = arg
     when '--nocolor'
       $color = false
+    when '--clear'
+      wipe = true
     else
       puts usage
       exit 0
   end
-end 
+end
+
+$PROGRAM_NAME = 'ruBee' if wipe
 
 TERMINAL_STATE = `stty -g`
 at_exit { system "stty #{TERMINAL_STATE}" }

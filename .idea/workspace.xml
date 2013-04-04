@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62587990-1d17-4553-a1dc-ec94eb1f675d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/defaults.rb" afterPath="$PROJECT_DIR$/defaults.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icb_packet.rb" afterPath="$PROJECT_DIR$/icb_packet.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruBee.rb" afterPath="$PROJECT_DIR$/ruBee.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ruBee.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365041548335" ignored="false" />
+    <file path="/Dummy.txt" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365042971505" ignored="false" />
     <file path="/user_input.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365036280383" ignored="false" />
-    <file path="/ruBee.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365042926230" ignored="false" />
+    <file path="/ruBee.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365049000013" ignored="false" />
     <file path="/icb_read.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365025600163" ignored="false" />
     <file path="/defaults.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365041929268" ignored="false" />
     <file path="/icb_packet.rb" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1365041939851" ignored="false" />
@@ -45,7 +43,7 @@
       <file leaf-file-name="ruBee.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ruBee.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="13" selection-start="2175" selection-end="2175" vertical-scroll-proportion="0.7882823">
+            <state line="75" column="17" selection-start="2148" selection-end="2148" vertical-scroll-proportion="0.29027963">
               <folding />
             </state>
           </provider>
@@ -235,7 +233,11 @@
       <created>1365041550277</created>
       <updated>1365041550277</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="moved host and port to defaults">
+      <created>1365042973860</created>
+      <updated>1365042973860</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -300,7 +302,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed help text" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved host and port to defaults" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -318,6 +320,7 @@
     <MESSAGE value="checkpoint" />
     <MESSAGE value="moved nickname, default_group and password into defaults so that they can be over ridden from a .ruBeerc file&#10;" />
     <MESSAGE value="fixed help text" />
+    <MESSAGE value="moved host and port to defaults" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -353,7 +356,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ruBee.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="13" selection-start="2175" selection-end="2175" vertical-scroll-proportion="0.7882823">
+        <state line="75" column="17" selection-start="2148" selection-end="2148" vertical-scroll-proportion="0.29027963">
           <folding />
         </state>
       </provider>
