@@ -10,7 +10,7 @@ class UserInput < Thread
         if $nick_list.size > 0
           s.sub!(/^\/m \w+\s*/,'')
           s.prepend "/m #{$nick_list[next_nic]} "
-          next_nic = next_nic == $nick_list.size - 1 ? 0 : next_nic + 1
+          next_nic = next_nic == $nick_list.size - 1 ? 0 : next_nic + 1 if $nick_list.size > 1
           s
         end
       end
@@ -28,6 +28,7 @@ class UserInput < Thread
             line = Readline.readline('', true)
           end
 
+          next unless line
           unless line.start_with? '/'
             IcbPacket::new(:open, [line]).send($icb_socket)
           else
@@ -46,7 +47,7 @@ class UserInput < Thread
             elsif line =~ /^\/nop/
               IcbPacket::new(:nop).send($icb_socket)  
             elsif (line =~ /^\/quit/) or (line =~ /^\/q$/) or (line =~ /^\/exit/)
-              exit     
+              exit
             end
           end
         end

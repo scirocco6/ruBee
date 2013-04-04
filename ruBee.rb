@@ -11,6 +11,12 @@ require 'getoptlong'
 require 'thread'
 require 'pathname'
 
+trap('INT', 'SIG_IGN') do
+  system "stty #{TERMINAL_STATE}"
+  yon = Readline.readline(prompt="Really quit?", false)
+  exit if (line =~ /^[Yy]$/) or (line.upcase! == "YES")
+end
+
 pn = Pathname.new("#{Dir.home}/.ruBeerc")
 if pn.exist?
   load "#{Dir.home}/.ruBeerc"
@@ -93,12 +99,9 @@ $user_thread   = UserInput.new.join
 # Execution never reaches this point.  
 #
 # We now have two threads, one for user input and one for 
-# reading from the icb seerver.  The nice thing about doing it this way is that the class names
+# reading from the icb server.  The nice thing about doing it this way is that the class names
 # will show up when listing or debugging the threads.  use:
 # Thread.list.each {|t| p t}
 # to display all of the threads and their status
 #
-
-
-
 
