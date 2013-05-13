@@ -10,6 +10,16 @@ require 'readline'
 require 'getoptlong'
 require 'thread'
 require 'pathname'
+require 'curses'
+include Curses
+
+#puts "Starting"
+#exit
+
+
+
+
+
 
 trap('INT', 'SIG_IGN') do
   system "stty #{TERMINAL_STATE}"
@@ -17,9 +27,15 @@ trap('INT', 'SIG_IGN') do
   exit if (line =~ /^[Yy]$/) or (line.upcase! == "YES")
 end
 
-pn = Pathname.new("#{Dir.home}/.ruBeerc")
+#
+# find home dir in a way that works on windows and unix and ruby 1.8.7
+#
+homes = ["HOME", "HOMEPATH"]
+realHome = homes.detect {|h| ENV[h] != nil}
+pn = Pathname.new("#{ENV[realHome]}/.ruBeerc")
+
 if pn.exist?
-  load "#{Dir.home}/.ruBeerc"
+  load pn
 end
 
 $screen_semaphore = Mutex.new
@@ -32,7 +48,7 @@ opts = GetoptLong.new(
   ['--host',      '-h', GetoptLong::REQUIRED_ARGUMENT],
   ['--port',      '-s', GetoptLong::REQUIRED_ARGUMENT],
   ['--nocolor',   '-m', GetoptLong::NO_ARGUMENT],
-  ['--clear',     '-c', GetoptLong::NO_ARGUMENT],
+  ['--clear',     '-c', GetoptLong::NO_ARGUMENT]
 )
 
 usage = "ruBee {options}

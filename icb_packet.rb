@@ -52,12 +52,12 @@ class IcbPacket
               
               seconds = idle.to_i
 
-              days     = seconds / (24 * 60 * 60);
-              seconds -= days * 24 * 60 * 60;
-              hours    = seconds / (60 * 60);
-              seconds -= hours * 60 * 60;
-              minutes  = seconds / 60;
-              seconds -= minutes * 60;
+              days     = seconds / (24 * 60 * 60)
+              seconds -= days * 24 * 60 * 60
+              hours    = seconds / (60 * 60)
+              seconds -= hours * 60 * 60
+              minutes  = seconds / 60
+              seconds -= minutes * 60
                       
               idle = ''
               idle << "#{days}d"    if days     > 0
@@ -65,8 +65,9 @@ class IcbPacket
               idle << "#{minutes}m" if minutes  > 0
               idle << "#{seconds}s" if seconds  > 0
               idle = '-' if idle == ''
-              
-              return "#{flag}#{nick.ljust(13)}#{idle.rjust(14)}#{Time.at(login.to_i).strftime("%m/%d %H:%M").rjust(13)}  #{account}".fg_color($who_color)
+
+              idle.gsub!(/([a-z])(\d)/, '\1,\2')
+              return "#{flag}#{nick.ljust(13)}#{idle.rjust(18)}#{Time.at(login.to_i).strftime("%m/%d %H:%M").rjust(13)}  #{account}".fg_color($who_color)
             else
               return "Unknown packet of type '#{packet[0,1]}'\n#{packet}".fg_color($error_color)
           end
