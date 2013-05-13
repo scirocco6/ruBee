@@ -29,7 +29,6 @@ class UserInput < Thread
           end
 
           next if line == ''
-          puts "the line is '${line}'"
           unless line.start_with? '/'
             IcbPacket::new(:open, [line]).send($icb_socket)
           else
