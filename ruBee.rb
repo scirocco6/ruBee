@@ -66,50 +66,53 @@ usage = "ruBee {options}
 "
 
 wipe = false
-opts.each do |opt, arg|
-  case opt
-    when '--help'
-      puts usage
-      exit 0
-    when '--group'
-      if arg == ''
+
+begin
+  opts.each do |opt, arg|
+    case opt
+      when '--help'
         puts usage
         exit 0
-      end
-      $default_group = arg
-    when '--nickname'
-      if arg == ''
-        puts usage
-        exit 0
-      end
-      $nickname = arg
-   when '--password'
-     if arg == ''
-        puts usage
-        exit 0
-      end
-      $password = arg
-      wipe = true
-    when '--host'
-      if arg == ''
-        puts usage
-        exit 0
-      end
-      $default_host = arg
-    when '--port'
-      if arg == ''
-        puts usage
-        exit 0
-      end
-      $default_port = arg
-    when '--nocolor'
-      $color = false
-    when '--clear'
-      wipe = true
-    else
-      puts usage
-      exit 0
+      when '--group'
+        if arg == ''
+          puts usage
+          exit 0
+        end
+        $default_group = arg
+      when '--nickname'
+        if arg == ''
+          puts usage
+          exit 0
+        end
+        $nickname = arg
+     when '--password'
+       if arg == ''
+          puts usage
+          exit 0
+        end
+        $password = arg
+        wipe = true
+      when '--host'
+        if arg == ''
+          puts usage
+          exit 0
+        end
+        $default_host = arg
+      when '--port'
+        if arg == ''
+          puts usage
+          exit 0
+        end
+        $default_port = arg
+      when '--nocolor'
+        $color = false
+      when '--clear'
+        wipe = true
+    end
   end
+rescue
+  puts usage
+  exit 0
 end
 
 $PROGRAM_NAME = 'ruBee' if wipe

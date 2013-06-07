@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62587990-1d17-4553-a1dc-ec94eb1f675d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user_input.rb" afterPath="$PROJECT_DIR$/user_input.rb" />
-    </list>
+    <list default="true" id="62587990-1d17-4553-a1dc-ec94eb1f675d" name="Default" comment="" />
     <ignored path="ruBee.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="62587990-1d17-4553-a1dc-ec94eb1f675d" time="1368378042779" ignored="false" />
