@@ -6,7 +6,7 @@ class IcbRead < Thread
   def initialize
     super do
       while 1 do
-        packet_size = $icb_socket.read(1) # read blocks until correct # of chars received
+        packet_size = $icb_socket.read(1)                  # read blocks until correct # of chars received
         packet      = $icb_socket.read(packet_size[0].ord) # recv returns with as many characters as are ready
         message     = IcbPacket.decode(packet)
         
@@ -17,4 +17,3 @@ class IcbRead < Thread
     end
   end
 end
-  

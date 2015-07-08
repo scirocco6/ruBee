@@ -13,14 +13,6 @@ require 'pathname'
 require 'curses'
 include Curses
 
-#puts "Starting"
-#exit
-
-
-
-
-
-
 trap('INT', 'SIG_IGN') do
   system "stty #{TERMINAL_STATE}"
   yon = Readline.readline(prompt="Really quit?", false)
@@ -41,9 +33,9 @@ end
 $screen_semaphore = Mutex.new
 
 opts = GetoptLong.new(
-  ['--help',      '-?', GetoptLong::NO_ARGUMENT ],
-  ['--group',     '-g', GetoptLong::REQUIRED_ARGUMENT ],
-  ['--nickname',  '-n', GetoptLong::REQUIRED_ARGUMENT ],
+  ['--help',      '-?', GetoptLong::NO_ARGUMENT],
+  ['--group',     '-g', GetoptLong::REQUIRED_ARGUMENT],
+  ['--nickname',  '-n', GetoptLong::REQUIRED_ARGUMENT],
   ['--password',  '-p', GetoptLong::REQUIRED_ARGUMENT],
   ['--host',      '-h', GetoptLong::REQUIRED_ARGUMENT],
   ['--port',      '-s', GetoptLong::REQUIRED_ARGUMENT],
@@ -51,19 +43,22 @@ opts = GetoptLong.new(
   ['--clear',     '-c', GetoptLong::NO_ARGUMENT]
 )
 
-usage = "ruBee {options}
-  -n nickname, --nickname nickname  nickname to use
-  -p password, --password password  login using password
-  -g group,    --group group        group to join at startup
-  -w,          --who                perform a global who instead of logging in
-  -w group,    --who group          who a group instead of logging in
-  -w @nickname --who nickname       who the group nickname is in instead of logging in
-  -h host,     --host host          connect to server on host
-  -s port,     --port port          connect port number port
-  -c,          --clear              wipe the command line arguments
-  -m,          --nocolor            disable text coloration
-  -?,          --help               this message
-"
+def usage
+  puts "ruBee {options}
+    -n nickname, --nickname nickname  nickname to use
+    -p password, --password password  login using password
+    -g group,    --group group        group to join at startup
+    -w,          --who                perform a global who instead of logging in
+    -w group,    --who group          who a group instead of logging in
+    -w @nickname --who nickname       who the group nickname is in instead of logging in
+    -h host,     --host host          connect to server on host
+    -s port,     --port port          connect port number port
+    -c,          --clear              wipe the command line arguments
+    -m,          --nocolor            disable text coloration
+    -?,          --help               this message
+  "
+  exit 0
+end
 
 wipe = false
 
@@ -71,39 +66,18 @@ begin
   opts.each do |opt, arg|
     case opt
       when '--help'
-        puts usage
-        exit 0
+        usage
       when '--group'
-        if arg == ''
-          puts usage
-          exit 0
-        end
-        $default_group = arg
+        arg != '' ? $default_group = arg : usage
       when '--nickname'
-        if arg == ''
-          puts usage
-          exit 0
-        end
-        $nickname = arg
+        arg != '' ? $nickname = arg : usage
      when '--password'
-       if arg == ''
-          puts usage
-          exit 0
-        end
-        $password = arg
+        arg != '' ? $password = arg : usage
         wipe = true
       when '--host'
-        if arg == ''
-          puts usage
-          exit 0
-        end
-        $default_host = arg
+        arg != '' ? $default_host = arg : usage
       when '--port'
-        if arg == ''
-          puts usage
-          exit 0
-        end
-        $default_port = arg
+        arg != '' ? $default_port = arg : usage
       when '--nocolor'
         $color = false
       when '--clear'
@@ -111,8 +85,7 @@ begin
     end
   end
 rescue
-  puts usage
-  exit 0
+  usage
 end
 
 $PROGRAM_NAME = 'ruBee' if wipe
