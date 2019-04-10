@@ -8,8 +8,13 @@ class IcbPacket
 
     def self.get_packet(socket)
       return '' unless socket
+<<<<<<< HEAD
 
       packet_size = socket.read(1) # read blocks until correct # of chars received
+=======
+      
+      packet_size = socket.read(1)            # read blocks until correct # of chars received
+>>>>>>> 45b876ade64c460e43a3930907f6e1a862199b7c
       return(socket.read(packet_size[0].ord)) # recv returns with as many characters as are ready
     end
 
