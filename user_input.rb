@@ -38,6 +38,7 @@ class UserInput < Thread
             elsif line =~ /^\/m\s(\w+)(\s.*)/
               $nick_list.unshift $1 unless $nick_list.index $1
               IcbPacket::new(:private, [$1 << $2]).send($icb_socket)
+              IcbPacket::new(:private, [$1 << $2]).dump
             elsif line =~ /^\/g\s(.*)/
               IcbPacket::new(:group, [$1]).send($icb_socket)
             elsif line =~ /^\/w\s(.+)/

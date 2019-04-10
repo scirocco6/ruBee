@@ -16,14 +16,9 @@ include Curses
 #puts "Starting"
 #exit
 
-
-
-
-
-
 trap('INT', 'SIG_IGN') do
   system "stty #{TERMINAL_STATE}"
-  yon = Readline.readline(prompt="Really quit?", false)
+  line = Readline.readline(prompt="Really quit?", false)
   exit if (line =~ /^[Yy]$/) or (line.upcase! == "YES")
 end
 
